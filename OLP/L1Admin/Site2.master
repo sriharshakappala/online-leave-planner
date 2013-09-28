@@ -1,0 +1,76 @@
+<%@ Master Language="VB" CodeFile="Site2.master.vb" Inherits="L1Admin_Site2" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Leave Planner</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="shortcut icon" href="../Styles/Images/favicon.gif" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="../Styles/Style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <!--Header Begin-->
+    <div class="header">
+        <div class="center">
+            <div class="logo">
+                <a href="#">Leave Planner</a>
+            </div>
+            <!--Menu Begin-->
+            <div class="menu">
+                <ul>
+                    <li>
+                        <asp:HyperLink ID="Time_Table" runat="server" NavigateUrl="~/L1Admin/TimeTable.aspx"><span>Time Table</span></asp:HyperLink></li>
+                    <li>
+                        <asp:HyperLink ID="Calendar" runat="server" NavigateUrl="~/L1Admin/Calendar.aspx"><span>Calendar</span></asp:HyperLink></li>
+                    <li>
+                        <asp:HyperLink ID="ProfileId" runat="server" NavigateUrl="~/L1Admin/Profile.aspx"><span>Profile</span></asp:HyperLink></li>
+                    <li>
+                        <asp:HyperLink ID="Logout" runat="server" NavigateUrl="~/Logout.aspx"><span>Logout</span></asp:HyperLink></li>
+                    <li>
+                        <asp:HyperLink ID="Back" runat="server" NavigateUrl="~/L1Admin/Default.aspx"><span>Back</span></asp:HyperLink></li>
+                </ul>
+            </div>
+            <!--Menu END-->
+        </div>
+    </div>
+    <!--Header END-->
+    <!--SubPage Toprow Begin-->
+    <div class="toprowsub">
+        <div class="center">
+            <h2>
+                <asp:ContentPlaceHolder ID="TopContent" runat="server" />
+            </h2>
+        </div>
+    </div>
+    <!--Toprow END-->
+    <!--SubPage MiddleRow Begin-->
+    <div class="midrow">
+        <div class="center">
+            <div class="textbox2">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+        </div>
+    </div>
+    <!--MiddleRow END-->
+    <!--Footer Begin-->
+    <asp:Panel ID="Panel1" runat="server" CssClass="footer">
+        <div class="footer">
+            <div class="foot">
+                &copy; Leave Planner 2012 &nbsp; |&nbsp; Sitemap | Terms of&nbsp; Use | Privacy&nbsp;Statement
+                | Feedback | Contact Us
+            </div>
+        </div>
+    </asp:Panel>
+    <asp:AlwaysVisibleControlExtender ID="AlwaysVisibleControlExtender1" runat="server"
+        TargetControlID="Panel1" VerticalSide="Bottom" HorizontalSide="Center" ScrollEffectDuration="0.00000001">
+    </asp:AlwaysVisibleControlExtender>
+    <!--Footer END-->
+    </form>
+</body>
+</html>

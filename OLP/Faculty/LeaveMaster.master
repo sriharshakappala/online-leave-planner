@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Faculty/Site.master" AutoEventWireup="true"
+    CodeFile="LeaveMaster.master.cs" Inherits="Faculty_LeaveMaster" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="TopContent" runat="Server">
+    <!--Menu Begin-->
+    <div class="menu2">
+        <ul>
+            <li>
+                <asp:HyperLink ID="LeaveHome" runat="server" NavigateUrl="~/Faculty/LeaveHome.aspx"><span>Leave Details</span></asp:HyperLink></li>
+            <li>
+                <asp:HyperLink ID="New" runat="server" NavigateUrl="~/Faculty/NewLeave.aspx"><span>New</span></asp:HyperLink></li>
+            <li>
+                <asp:HyperLink ID="History" runat="server" NavigateUrl="~/Faculty/LeaveHistory.aspx"><span>Leave History</span></asp:HyperLink></li>            
+        </ul>
+    </div>
+    <!--Menu END-->
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server" >
+        <p>
+            &nbsp;</p>
+    </asp:ContentPlaceHolder>
+</asp:Content>

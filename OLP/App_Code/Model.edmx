@@ -1,0 +1,1079 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OLPModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="OLPModelStoreContainer">
+          <EntitySet Name="Adjustment" EntityType="OLPModel.Store.Adjustment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AdjustmentRequest" EntityType="OLPModel.Store.AdjustmentRequest" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Calendar" EntityType="OLPModel.Store.Calendar" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="College" EntityType="OLPModel.Store.College" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Department" EntityType="OLPModel.Store.Department" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Faculty" EntityType="OLPModel.Store.Faculty" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HOD" EntityType="OLPModel.Store.HOD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Leave" EntityType="OLPModel.Store.Leave" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Leave_Type" EntityType="OLPModel.Store.Leave_Type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Period" EntityType="OLPModel.Store.Period" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Principal" EntityType="OLPModel.Store.Principal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Section" EntityType="OLPModel.Store.Section" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TimeTableTemplate" EntityType="OLPModel.Store.TimeTableTemplate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Working_Hours" EntityType="OLPModel.Store.Working_Hours" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Adjustment_Leave" Association="OLPModel.Store.FK_Adjustment_Leave">
+            <End Role="Leave" EntitySet="Leave" />
+            <End Role="Adjustment" EntitySet="Adjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adjustment_Working_Hours" Association="OLPModel.Store.FK_Adjustment_Working_Hours">
+            <End Role="Working_Hours" EntitySet="Working_Hours" />
+            <End Role="Adjustment" EntitySet="Adjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdjustmentRequest_Adjustment" Association="OLPModel.Store.FK_AdjustmentRequest_Adjustment">
+            <End Role="Adjustment" EntitySet="Adjustment" />
+            <End Role="AdjustmentRequest" EntitySet="AdjustmentRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdjustmentRequest_Faculty" Association="OLPModel.Store.FK_AdjustmentRequest_Faculty">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="AdjustmentRequest" EntitySet="AdjustmentRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faculty_Department" Association="OLPModel.Store.FK_Faculty_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Faculty" EntitySet="Faculty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOD_Faculty" Association="OLPModel.Store.FK_HOD_Faculty">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="HOD" EntitySet="HOD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Faculty" Association="OLPModel.Store.FK_Leave_Faculty">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="Leave" EntitySet="Leave" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Faculty1" Association="OLPModel.Store.FK_Leave_Faculty1">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="Leave" EntitySet="Leave" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Leave_Type" Association="OLPModel.Store.FK_Leave_Leave_Type">
+            <End Role="Leave_Type" EntitySet="Leave_Type" />
+            <End Role="Leave" EntitySet="Leave" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Period_TimeTableTemplate" Association="OLPModel.Store.FK_Period_TimeTableTemplate">
+            <End Role="TimeTableTemplate" EntitySet="TimeTableTemplate" />
+            <End Role="Period" EntitySet="Period" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Principal_Faculty" Association="OLPModel.Store.FK_Principal_Faculty">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="Principal" EntitySet="Principal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Section_Department1" Association="OLPModel.Store.FK_Section_Department1">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Section" EntitySet="Section" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Working_Hours_Faculty" Association="OLPModel.Store.FK_Working_Hours_Faculty">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="Working_Hours" EntitySet="Working_Hours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Working_Hours_Period" Association="OLPModel.Store.FK_Working_Hours_Period">
+            <End Role="Period" EntitySet="Period" />
+            <End Role="Working_Hours" EntitySet="Working_Hours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Working_Hours_Section" Association="OLPModel.Store.FK_Working_Hours_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Working_Hours" EntitySet="Working_Hours" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Adjustment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Leave_Id" Type="int" Nullable="false" />
+          <Property Name="Working_Hour_Id" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Faculty_ID" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="AdjustmentRequest">
+          <Key>
+            <PropertyRef Name="AdjusmentId" />
+            <PropertyRef Name="FacultyId" />
+          </Key>
+          <Property Name="AdjusmentId" Type="int" Nullable="false" />
+          <Property Name="FacultyId" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Comment" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="Admin_Name" />
+          </Key>
+          <Property Name="Admin_Name" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Security_Question" Type="varchar" MaxLength="50" />
+          <Property Name="Answer" Type="varchar" MaxLength="50" />
+          <Property Name="Email_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Phone_Number" Type="varchar" MaxLength="13" />
+          <Property Name="Break_Time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Faculty">
+          <Key>
+            <PropertyRef Name="User_Name" />
+          </Key>
+          <Property Name="User_Name" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Security_Question" Type="varchar" MaxLength="30" />
+          <Property Name="Answer" Type="varchar" MaxLength="30" />
+          <Property Name="Department_Id" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Phone_Number" Type="varchar" MaxLength="12" />
+          <Property Name="Email_Id" Type="varchar" MaxLength="30" />
+          <Property Name="CCLC" Type="int" />
+        </EntityType>
+        <EntityType Name="HOD">
+          <Key>
+            <PropertyRef Name="Faculty_Id" />
+          </Key>
+          <Property Name="Faculty_Id" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Leave_Type_Id" Type="tinyint" Nullable="false" />
+          <Property Name="Applier_Id" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Approver_Id" Type="varchar" MaxLength="30" />
+          <Property Name="From_Date" Type="datetime" Nullable="false" />
+          <Property Name="From_Session" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="To_Date" Type="datetime" Nullable="false" />
+          <Property Name="To_Session" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Reason" Type="varchar" Nullable="false" MaxLength="5000" />
+          <Property Name="Phone_Number" Type="varchar" MaxLength="12" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Comment" Type="varchar" MaxLength="5000" />
+        </EntityType>
+        <EntityType Name="Leave_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Max_Leaves_Month" Type="tinyint" Nullable="false" />
+          <Property Name="Max_Leaves_Year" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Template_Id" Type="int" Nullable="false" />
+          <Property Name="Start_Time" Type="datetime" Nullable="false" />
+          <Property Name="Session" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Principal">
+          <Key>
+            <PropertyRef Name="Faculty_Id" />
+          </Key>
+          <Property Name="Faculty_Id" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Priority" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Department_Id" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TimeTableTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Period_Duration" Type="int" />
+        </EntityType>
+        <EntityType Name="Working_Hours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Faculty_Id" Type="varchar" MaxLength="30" />
+          <Property Name="Day" Type="tinyint" Nullable="false" />
+          <Property Name="Section_Id" Type="int" Nullable="false" />
+          <Property Name="Period_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Adjustment_Leave">
+          <End Role="Leave" Type="OLPModel.Store.Leave" Multiplicity="1" />
+          <End Role="Adjustment" Type="OLPModel.Store.Adjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leave">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adjustment">
+              <PropertyRef Name="Leave_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adjustment_Working_Hours">
+          <End Role="Working_Hours" Type="OLPModel.Store.Working_Hours" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Adjustment" Type="OLPModel.Store.Adjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Working_Hours">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adjustment">
+              <PropertyRef Name="Working_Hour_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdjustmentRequest_Adjustment">
+          <End Role="Adjustment" Type="OLPModel.Store.Adjustment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AdjustmentRequest" Type="OLPModel.Store.AdjustmentRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adjustment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdjustmentRequest">
+              <PropertyRef Name="AdjusmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdjustmentRequest_Faculty">
+          <End Role="Faculty" Type="OLPModel.Store.Faculty" Multiplicity="1" />
+          <End Role="AdjustmentRequest" Type="OLPModel.Store.AdjustmentRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="AdjustmentRequest">
+              <PropertyRef Name="FacultyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faculty_Department">
+          <End Role="Department" Type="OLPModel.Store.Department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Faculty" Type="OLPModel.Store.Faculty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Faculty">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOD_Faculty">
+          <End Role="Faculty" Type="OLPModel.Store.Faculty" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HOD" Type="OLPModel.Store.HOD" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="HOD">
+              <PropertyRef Name="Faculty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Faculty">
+          <End Role="Faculty" Type="OLPModel.Store.Faculty" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Leave" Type="OLPModel.Store.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Applier_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Faculty1">
+          <End Role="Faculty" Type="OLPModel.Store.Faculty" Multiplicity="0..1" />
+          <End Role="Leave" Type="OLPModel.Store.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Approver_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Leave_Type">
+          <End Role="Leave_Type" Type="OLPModel.Store.Leave_Type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Leave" Type="OLPModel.Store.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leave_Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Leave_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Period_TimeTableTemplate">
+          <End Role="TimeTableTemplate" Type="OLPModel.Store.TimeTableTemplate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Period" Type="OLPModel.Store.Period" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeTableTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Period">
+              <PropertyRef Name="Template_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Principal_Faculty">
+          <End Role="Faculty" Type="OLPModel.Store.Faculty" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Principal" Type="OLPModel.Store.Principal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Principal">
+              <PropertyRef Name="Faculty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Section_Department1">
+          <End Role="Department" Type="OLPModel.Store.Department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Section" Type="OLPModel.Store.Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Section">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Working_Hours_Faculty">
+          <End Role="Faculty" Type="OLPModel.Store.Faculty" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Working_Hours" Type="OLPModel.Store.Working_Hours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Working_Hours">
+              <PropertyRef Name="Faculty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Working_Hours_Period">
+          <End Role="Period" Type="OLPModel.Store.Period" Multiplicity="1" />
+          <End Role="Working_Hours" Type="OLPModel.Store.Working_Hours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Working_Hours">
+              <PropertyRef Name="Period_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Working_Hours_Section">
+          <End Role="Section" Type="OLPModel.Store.Section" Multiplicity="1" />
+          <End Role="Working_Hours" Type="OLPModel.Store.Working_Hours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Working_Hours">
+              <PropertyRef Name="Section_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OLPModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="OLPEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adjustments" EntityType="OLPModel.Adjustment" />
+          <EntitySet Name="AdjustmentRequests" EntityType="OLPModel.AdjustmentRequest" />
+          <EntitySet Name="Calendars" EntityType="OLPModel.Calendar" />
+          <EntitySet Name="Colleges" EntityType="OLPModel.College" />
+          <EntitySet Name="Departments" EntityType="OLPModel.Department" />
+          <EntitySet Name="Faculties" EntityType="OLPModel.Faculty" />
+          <EntitySet Name="HODs" EntityType="OLPModel.HOD" />
+          <EntitySet Name="Leaves" EntityType="OLPModel.Leave" />
+          <EntitySet Name="Leave_Type" EntityType="OLPModel.Leave_Type" />
+          <EntitySet Name="Periods" EntityType="OLPModel.Period" />
+          <EntitySet Name="Principals" EntityType="OLPModel.Principal" />
+          <EntitySet Name="Sections" EntityType="OLPModel.Section" />
+          <EntitySet Name="TimeTableTemplates" EntityType="OLPModel.TimeTableTemplate" />
+          <EntitySet Name="Working_Hours" EntityType="OLPModel.Working_Hours" />
+          <AssociationSet Name="FK_Adjustment_Leave" Association="OLPModel.FK_Adjustment_Leave">
+            <End Role="Leave" EntitySet="Leaves" />
+            <End Role="Adjustment" EntitySet="Adjustments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adjustment_Working_Hours" Association="OLPModel.FK_Adjustment_Working_Hours">
+            <End Role="Working_Hours" EntitySet="Working_Hours" />
+            <End Role="Adjustment" EntitySet="Adjustments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdjustmentRequest_Adjustment" Association="OLPModel.FK_AdjustmentRequest_Adjustment">
+            <End Role="Adjustment" EntitySet="Adjustments" />
+            <End Role="AdjustmentRequest" EntitySet="AdjustmentRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdjustmentRequest_Faculty" Association="OLPModel.FK_AdjustmentRequest_Faculty">
+            <End Role="Faculty" EntitySet="Faculties" />
+            <End Role="AdjustmentRequest" EntitySet="AdjustmentRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faculty_Department" Association="OLPModel.FK_Faculty_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Faculty" EntitySet="Faculties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Section_Department1" Association="OLPModel.FK_Section_Department1">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Section" EntitySet="Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOD_Faculty" Association="OLPModel.FK_HOD_Faculty">
+            <End Role="Faculty" EntitySet="Faculties" />
+            <End Role="HOD" EntitySet="HODs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Faculty" Association="OLPModel.FK_Leave_Faculty">
+            <End Role="Faculty" EntitySet="Faculties" />
+            <End Role="Leave" EntitySet="Leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Faculty1" Association="OLPModel.FK_Leave_Faculty1">
+            <End Role="Faculty" EntitySet="Faculties" />
+            <End Role="Leave" EntitySet="Leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Principal_Faculty" Association="OLPModel.FK_Principal_Faculty">
+            <End Role="Faculty" EntitySet="Faculties" />
+            <End Role="Principal" EntitySet="Principals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Working_Hours_Faculty" Association="OLPModel.FK_Working_Hours_Faculty">
+            <End Role="Faculty" EntitySet="Faculties" />
+            <End Role="Working_Hours" EntitySet="Working_Hours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Leave_Type" Association="OLPModel.FK_Leave_Leave_Type">
+            <End Role="Leave_Type" EntitySet="Leave_Type" />
+            <End Role="Leave" EntitySet="Leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Period_TimeTableTemplate" Association="OLPModel.FK_Period_TimeTableTemplate">
+            <End Role="TimeTableTemplate" EntitySet="TimeTableTemplates" />
+            <End Role="Period" EntitySet="Periods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Working_Hours_Period" Association="OLPModel.FK_Working_Hours_Period">
+            <End Role="Period" EntitySet="Periods" />
+            <End Role="Working_Hours" EntitySet="Working_Hours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Working_Hours_Section" Association="OLPModel.FK_Working_Hours_Section">
+            <End Role="Section" EntitySet="Sections" />
+            <End Role="Working_Hours" EntitySet="Working_Hours" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Adjustment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Leave_Id" Type="Int32" Nullable="false" />
+          <Property Name="Working_Hour_Id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Faculty_ID" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Leave" Relationship="OLPModel.FK_Adjustment_Leave" FromRole="Adjustment" ToRole="Leave" />
+          <NavigationProperty Name="Working_Hours" Relationship="OLPModel.FK_Adjustment_Working_Hours" FromRole="Adjustment" ToRole="Working_Hours" />
+          <NavigationProperty Name="AdjustmentRequests" Relationship="OLPModel.FK_AdjustmentRequest_Adjustment" FromRole="Adjustment" ToRole="AdjustmentRequest" />
+        </EntityType>
+        <EntityType Name="AdjustmentRequest">
+          <Key>
+            <PropertyRef Name="AdjusmentId" />
+            <PropertyRef Name="FacultyId" />
+          </Key>
+          <Property Name="AdjusmentId" Type="Int32" Nullable="false" />
+          <Property Name="FacultyId" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Adjustment" Relationship="OLPModel.FK_AdjustmentRequest_Adjustment" FromRole="AdjustmentRequest" ToRole="Adjustment" />
+          <NavigationProperty Name="Faculty" Relationship="OLPModel.FK_AdjustmentRequest_Faculty" FromRole="AdjustmentRequest" ToRole="Faculty" />
+        </EntityType>
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="Admin_Name" />
+          </Key>
+          <Property Name="Admin_Name" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Security_Question" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Answer" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Email_Id" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+          <Property Name="Break_Time" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Faculties" Relationship="OLPModel.FK_Faculty_Department" FromRole="Department" ToRole="Faculty" />
+          <NavigationProperty Name="Sections" Relationship="OLPModel.FK_Section_Department1" FromRole="Department" ToRole="Section" />
+        </EntityType>
+        <EntityType Name="Faculty">
+          <Key>
+            <PropertyRef Name="User_Name" />
+          </Key>
+          <Property Name="User_Name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Security_Question" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Answer" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Department_Id" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="Email_Id" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="CCLC" Type="Int32" />
+          <NavigationProperty Name="AdjustmentRequests" Relationship="OLPModel.FK_AdjustmentRequest_Faculty" FromRole="Faculty" ToRole="AdjustmentRequest" />
+          <NavigationProperty Name="Department" Relationship="OLPModel.FK_Faculty_Department" FromRole="Faculty" ToRole="Department" />
+          <NavigationProperty Name="HOD" Relationship="OLPModel.FK_HOD_Faculty" FromRole="Faculty" ToRole="HOD" />
+          <NavigationProperty Name="Leaves" Relationship="OLPModel.FK_Leave_Faculty" FromRole="Faculty" ToRole="Leave" />
+          <NavigationProperty Name="Leaves1" Relationship="OLPModel.FK_Leave_Faculty1" FromRole="Faculty" ToRole="Leave" />
+          <NavigationProperty Name="Principal" Relationship="OLPModel.FK_Principal_Faculty" FromRole="Faculty" ToRole="Principal" />
+          <NavigationProperty Name="Working_Hours" Relationship="OLPModel.FK_Working_Hours_Faculty" FromRole="Faculty" ToRole="Working_Hours" />
+        </EntityType>
+        <EntityType Name="HOD">
+          <Key>
+            <PropertyRef Name="Faculty_Id" />
+          </Key>
+          <Property Name="Faculty_Id" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Faculty" Relationship="OLPModel.FK_HOD_Faculty" FromRole="HOD" ToRole="Faculty" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Leave_Type_Id" Type="Byte" Nullable="false" />
+          <Property Name="Applier_Id" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Approver_Id" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="From_Date" Type="DateTime" Nullable="false" />
+          <Property Name="From_Session" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="To_Date" Type="DateTime" Nullable="false" />
+          <Property Name="To_Session" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="5000" Unicode="false" FixedLength="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="5000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Adjustments" Relationship="OLPModel.FK_Adjustment_Leave" FromRole="Leave" ToRole="Adjustment" />
+          <NavigationProperty Name="Faculty" Relationship="OLPModel.FK_Leave_Faculty" FromRole="Leave" ToRole="Faculty" />
+          <NavigationProperty Name="Faculty1" Relationship="OLPModel.FK_Leave_Faculty1" FromRole="Leave" ToRole="Faculty" />
+          <NavigationProperty Name="Leave_Type" Relationship="OLPModel.FK_Leave_Leave_Type" FromRole="Leave" ToRole="Leave_Type" />
+        </EntityType>
+        <EntityType Name="Leave_Type">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Max_Leaves_Month" Type="Byte" Nullable="false" />
+          <Property Name="Max_Leaves_Year" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Leaves" Relationship="OLPModel.FK_Leave_Leave_Type" FromRole="Leave_Type" ToRole="Leave" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Template_Id" Type="Int32" Nullable="false" />
+          <Property Name="Start_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Session" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="TimeTableTemplate" Relationship="OLPModel.FK_Period_TimeTableTemplate" FromRole="Period" ToRole="TimeTableTemplate" />
+          <NavigationProperty Name="Working_Hours" Relationship="OLPModel.FK_Working_Hours_Period" FromRole="Period" ToRole="Working_Hours" />
+        </EntityType>
+        <EntityType Name="Principal">
+          <Key>
+            <PropertyRef Name="Faculty_Id" />
+          </Key>
+          <Property Name="Faculty_Id" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Priority" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Faculty" Relationship="OLPModel.FK_Principal_Faculty" FromRole="Principal" ToRole="Faculty" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department_Id" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Department" Relationship="OLPModel.FK_Section_Department1" FromRole="Section" ToRole="Department" />
+          <NavigationProperty Name="Working_Hours" Relationship="OLPModel.FK_Working_Hours_Section" FromRole="Section" ToRole="Working_Hours" />
+        </EntityType>
+        <EntityType Name="TimeTableTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Period_Duration" Type="Int32" />
+          <NavigationProperty Name="Periods" Relationship="OLPModel.FK_Period_TimeTableTemplate" FromRole="TimeTableTemplate" ToRole="Period" />
+        </EntityType>
+        <EntityType Name="Working_Hours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Faculty_Id" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Day" Type="Byte" Nullable="false" />
+          <Property Name="Section_Id" Type="Int32" Nullable="false" />
+          <Property Name="Period_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adjustments" Relationship="OLPModel.FK_Adjustment_Working_Hours" FromRole="Working_Hours" ToRole="Adjustment" />
+          <NavigationProperty Name="Faculty" Relationship="OLPModel.FK_Working_Hours_Faculty" FromRole="Working_Hours" ToRole="Faculty" />
+          <NavigationProperty Name="Period" Relationship="OLPModel.FK_Working_Hours_Period" FromRole="Working_Hours" ToRole="Period" />
+          <NavigationProperty Name="Section" Relationship="OLPModel.FK_Working_Hours_Section" FromRole="Working_Hours" ToRole="Section" />
+        </EntityType>
+        <Association Name="FK_Adjustment_Leave">
+          <End Role="Leave" Type="OLPModel.Leave" Multiplicity="1" />
+          <End Role="Adjustment" Type="OLPModel.Adjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leave">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adjustment">
+              <PropertyRef Name="Leave_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adjustment_Working_Hours">
+          <End Role="Working_Hours" Type="OLPModel.Working_Hours" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Adjustment" Type="OLPModel.Adjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Working_Hours">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adjustment">
+              <PropertyRef Name="Working_Hour_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdjustmentRequest_Adjustment">
+          <End Role="Adjustment" Type="OLPModel.Adjustment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AdjustmentRequest" Type="OLPModel.AdjustmentRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adjustment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdjustmentRequest">
+              <PropertyRef Name="AdjusmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdjustmentRequest_Faculty">
+          <End Role="Faculty" Type="OLPModel.Faculty" Multiplicity="1" />
+          <End Role="AdjustmentRequest" Type="OLPModel.AdjustmentRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="AdjustmentRequest">
+              <PropertyRef Name="FacultyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faculty_Department">
+          <End Role="Department" Type="OLPModel.Department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Faculty" Type="OLPModel.Faculty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Faculty">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Section_Department1">
+          <End Role="Department" Type="OLPModel.Department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Section" Type="OLPModel.Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Section">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOD_Faculty">
+          <End Role="Faculty" Type="OLPModel.Faculty" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HOD" Type="OLPModel.HOD" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="HOD">
+              <PropertyRef Name="Faculty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Faculty">
+          <End Role="Faculty" Type="OLPModel.Faculty" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Leave" Type="OLPModel.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Applier_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Faculty1">
+          <End Role="Faculty" Type="OLPModel.Faculty" Multiplicity="0..1" />
+          <End Role="Leave" Type="OLPModel.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Approver_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Principal_Faculty">
+          <End Role="Faculty" Type="OLPModel.Faculty" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Principal" Type="OLPModel.Principal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Principal">
+              <PropertyRef Name="Faculty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Working_Hours_Faculty">
+          <End Role="Faculty" Type="OLPModel.Faculty" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Working_Hours" Type="OLPModel.Working_Hours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="User_Name" />
+            </Principal>
+            <Dependent Role="Working_Hours">
+              <PropertyRef Name="Faculty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Leave_Type">
+          <End Role="Leave_Type" Type="OLPModel.Leave_Type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Leave" Type="OLPModel.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leave_Type">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="Leave_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Period_TimeTableTemplate">
+          <End Role="TimeTableTemplate" Type="OLPModel.TimeTableTemplate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Period" Type="OLPModel.Period" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeTableTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Period">
+              <PropertyRef Name="Template_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Working_Hours_Period">
+          <End Role="Period" Type="OLPModel.Period" Multiplicity="1" />
+          <End Role="Working_Hours" Type="OLPModel.Working_Hours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Working_Hours">
+              <PropertyRef Name="Period_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Working_Hours_Section">
+          <End Role="Section" Type="OLPModel.Section" Multiplicity="1" />
+          <End Role="Working_Hours" Type="OLPModel.Working_Hours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Working_Hours">
+              <PropertyRef Name="Section_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OLPModelStoreContainer" CdmEntityContainer="OLPEntities1">
+          <EntitySetMapping Name="Adjustments"><EntityTypeMapping TypeName="OLPModel.Adjustment"><MappingFragment StoreEntitySet="Adjustment">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Leave_Id" ColumnName="Leave_Id" />
+            <ScalarProperty Name="Working_Hour_Id" ColumnName="Working_Hour_Id" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Faculty_ID" ColumnName="Faculty_ID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AdjustmentRequests"><EntityTypeMapping TypeName="OLPModel.AdjustmentRequest"><MappingFragment StoreEntitySet="AdjustmentRequest">
+            <ScalarProperty Name="AdjusmentId" ColumnName="AdjusmentId" />
+            <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="Comment" ColumnName="Comment" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Calendars"><EntityTypeMapping TypeName="OLPModel.Calendar"><MappingFragment StoreEntitySet="Calendar">
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Colleges"><EntityTypeMapping TypeName="OLPModel.College"><MappingFragment StoreEntitySet="College">
+            <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="Security_Question" ColumnName="Security_Question" />
+            <ScalarProperty Name="Answer" ColumnName="Answer" />
+            <ScalarProperty Name="Email_Id" ColumnName="Email_Id" />
+            <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+            <ScalarProperty Name="Break_Time" ColumnName="Break_Time" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Departments"><EntityTypeMapping TypeName="OLPModel.Department"><MappingFragment StoreEntitySet="Department">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Faculties"><EntityTypeMapping TypeName="OLPModel.Faculty"><MappingFragment StoreEntitySet="Faculty">
+            <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="Security_Question" ColumnName="Security_Question" />
+            <ScalarProperty Name="Answer" ColumnName="Answer" />
+            <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+            <ScalarProperty Name="Email_Id" ColumnName="Email_Id" />
+            <ScalarProperty Name="CCLC" ColumnName="CCLC" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="HODs"><EntityTypeMapping TypeName="OLPModel.HOD"><MappingFragment StoreEntitySet="HOD">
+            <ScalarProperty Name="Faculty_Id" ColumnName="Faculty_Id" />
+            <ScalarProperty Name="Priority" ColumnName="Priority" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Leaves"><EntityTypeMapping TypeName="OLPModel.Leave"><MappingFragment StoreEntitySet="Leave">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Leave_Type_Id" ColumnName="Leave_Type_Id" />
+            <ScalarProperty Name="Applier_Id" ColumnName="Applier_Id" />
+            <ScalarProperty Name="Approver_Id" ColumnName="Approver_Id" />
+            <ScalarProperty Name="From_Date" ColumnName="From_Date" />
+            <ScalarProperty Name="From_Session" ColumnName="From_Session" />
+            <ScalarProperty Name="To_Date" ColumnName="To_Date" />
+            <ScalarProperty Name="To_Session" ColumnName="To_Session" />
+            <ScalarProperty Name="Reason" ColumnName="Reason" />
+            <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="Comment" ColumnName="Comment" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Leave_Type"><EntityTypeMapping TypeName="OLPModel.Leave_Type"><MappingFragment StoreEntitySet="Leave_Type">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Max_Leaves_Month" ColumnName="Max_Leaves_Month" />
+            <ScalarProperty Name="Max_Leaves_Year" ColumnName="Max_Leaves_Year" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Periods"><EntityTypeMapping TypeName="OLPModel.Period"><MappingFragment StoreEntitySet="Period">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Template_Id" ColumnName="Template_Id" />
+            <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+            <ScalarProperty Name="Session" ColumnName="Session" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Principals"><EntityTypeMapping TypeName="OLPModel.Principal"><MappingFragment StoreEntitySet="Principal">
+            <ScalarProperty Name="Faculty_Id" ColumnName="Faculty_Id" />
+            <ScalarProperty Name="Priority" ColumnName="Priority" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Sections"><EntityTypeMapping TypeName="OLPModel.Section"><MappingFragment StoreEntitySet="Section">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+            <ScalarProperty Name="Year" ColumnName="Year" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TimeTableTemplates"><EntityTypeMapping TypeName="OLPModel.TimeTableTemplate"><MappingFragment StoreEntitySet="TimeTableTemplate">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Period_Duration" ColumnName="Period_Duration" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Working_Hours"><EntityTypeMapping TypeName="OLPModel.Working_Hours"><MappingFragment StoreEntitySet="Working_Hours">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Faculty_Id" ColumnName="Faculty_Id" />
+            <ScalarProperty Name="Day" ColumnName="Day" />
+            <ScalarProperty Name="Section_Id" ColumnName="Section_Id" />
+            <ScalarProperty Name="Period_Id" ColumnName="Period_Id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model" ShowGrid="false" DisplayType="false">
+        <EntityTypeShape EntityType="OLPModel.Adjustment" Width="1.5" PointX="6.875" PointY="11.125" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.AdjustmentRequest" Width="1.5" PointX="4.75" PointY="10.5" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.Calendar" Width="1.5" PointX="4.5" PointY="5.5" Height="1.4033821614583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.College" Width="1.5" PointX="2.125" PointY="5.5" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.Department" Width="1.5" PointX="2.125" PointY="8.375" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.Faculty" Width="1.5" PointX="4.5" PointY="7.25" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.HOD" Width="1.5" PointX="7" PointY="7.5" Height="1.4033821614583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.Leave" Width="1.5" PointX="8.875" PointY="8.375" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.Leave_Type" Width="1.5" PointX="8.875" PointY="5.5" Height="1.7879850260416665" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.Period" Width="1.5" PointX="4.875" PointY="13.25" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.Principal" Width="1.5" PointX="7" PointY="5.5" Height="1.4033821614583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.Section" Width="1.5" PointX="2.125" PointY="10.875" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.TimeTableTemplate" Width="1.5" PointX="8.875" PointY="13.25" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="OLPModel.Working_Hours" Width="1.5" PointX="2.125" PointY="13.125" Height="1.9802864583333335" IsExpanded="true" />
+        <AssociationConnector Association="OLPModel.FK_Adjustment_Leave" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.875" PointY="11.4131982421875" />
+          <ConnectorPoint PointX="8.375" PointY="11.4131982421875" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Adjustment_Working_Hours" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.281252" PointY="13.125" />
+          <ConnectorPoint PointX="3.281252" PointY="12.875" />
+          <ConnectorPoint PointX="4.510416666666667" PointY="12.875" />
+          <ConnectorPoint PointX="4.677083333333333" PointY="12.875" />
+          <ConnectorPoint PointX="6.5" PointY="12.875" />
+          <ConnectorPoint PointX="6.5" PointY="12.115143229166666" />
+          <ConnectorPoint PointX="6.875" PointY="12.115143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_AdjustmentRequest_Adjustment" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.875" PointY="11.557571614583333" />
+          <ConnectorPoint PointX="6.25" PointY="11.557571614583333" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_AdjustmentRequest_Faculty" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.375" PointY="9.9994921875" />
+          <ConnectorPoint PointX="5.375" PointY="10.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Faculty_Department" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.625" PointY="9.03125" />
+          <ConnectorPoint PointX="4.5" PointY="9.03125" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Section_Department1" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.875" PointY="10.355286458333334" />
+          <ConnectorPoint PointX="2.875" PointY="10.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_HOD_Faculty" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="8.2016910807291659" />
+          <ConnectorPoint PointX="7" PointY="8.2016910807291659" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Leave_Faculty" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="9.6118859277343738" />
+          <ConnectorPoint PointX="8.875" PointY="9.6118859277343738" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Leave_Faculty1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="9.16178466796875" />
+          <ConnectorPoint PointX="8.875" PointY="9.16178466796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Principal_Faculty" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="7.25" />
+          <ConnectorPoint PointX="6.375" PointY="7.025" />
+          <ConnectorPoint PointX="6.375" PointY="7.2783821614583335" />
+          <ConnectorPoint PointX="6.625" PointY="7.2783821614583335" />
+          <ConnectorPoint PointX="7" PointY="6.9033821614583335" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Working_Hours_Faculty" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.59375" PointY="9.9994921875" />
+          <ConnectorPoint PointX="4.59375" PointY="13.140625" />
+          <ConnectorPoint PointX="3.625" PointY="13.140625" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Leave_Leave_Type" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.625" PointY="7.2879850260416665" />
+          <ConnectorPoint PointX="9.625" PointY="8.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Period_TimeTableTemplate" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.875" PointY="14.143992513020834" />
+          <ConnectorPoint PointX="6.375" PointY="14.143992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Working_Hours_Period" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.875" PointY="14.143992513020834" />
+          <ConnectorPoint PointX="3.625" PointY="14.143992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="OLPModel.FK_Working_Hours_Section" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.875" PointY="12.662985026041666" />
+          <ConnectorPoint PointX="2.875" PointY="13.125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
