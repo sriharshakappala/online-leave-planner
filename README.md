@@ -3,6 +3,8 @@ online-leave-planner
 
 An Online Leave Management solution that can be used in schools and colleges.
 
+(Open for contributions and feaure requests)
+
 
 Technology Used
 ===============
@@ -36,5 +38,7 @@ Installation Help
 Working - Coming Soon - Please Stay Tuned!
 
 
+For screenshots visit the below link
+====================================
 
-		OPEN FOR CONTRIBUTIONS & FEATURE REQUESTS
+https://www.dropbox.com/s/zamid2s4dcm3vp0/Online%20Leave%20Planner.pdf
